@@ -7,6 +7,9 @@ let box4 = document.querySelector("#box4");
 let box5 = document.querySelector("#box5");
 let elipse2 = document.querySelector("#elipse2");
 let boxAll = document.querySelectorAll("#boxAll");
+let buttonBlue = document.querySelector("#buttonBlue");
+let buttonLime = document.querySelector("#buttonLime");
+let buttonSky = document.querySelector("#buttonSky");
 
 // gsap.to() -> Dari kondisi sekarang → kondisi tujuan.
 // gsap.from() -> Mulai dari kondisi yang kita kasih → kembali ke kondisi normal.
@@ -85,8 +88,6 @@ gsap.from(title, {
   delay: 2,
 });
 
-// repeat: 2 & yoyo: true,
-
 // stagger -> akan muncul dengan waktu tertentu
 gsap.to(boxAll, {
   x: 200,
@@ -94,3 +95,39 @@ gsap.to(boxAll, {
   duration: 2,
   stagger: 1,
 });
+
+// repeat: 2 & yoyo: true,
+gsap.to(buttonBlue, {
+  x: 200,
+  duration: 2,
+  repeat: 2,
+  yoyo: true, // setiap iterasi perulangan animasi akan berjalan berlawanan
+});
+// repeat: -1 membuat sebuah loop tidak terbatas
+
+// onComplete -> animasi ini akan dipicu diakhir (contoh kita pakai alert)
+gsap.to(buttonLime, {
+  x: 400,
+  duration: 2,
+  repeat: 3,
+  yoyo: true,
+  // onComplete: () => {
+  //   alert("Animasi Button Lime Selesai");
+  // },
+});
+
+// parametric function + ease
+function parametric(progress) {
+  var sqt = progress * progress;
+  return sqt / (2.0 * (sqt - progress) + 1.0);
+}
+
+gsap.to(buttonSky, {
+  x: 400,
+  duration: 2,
+  repeat: 1,
+  yoyo: true,
+  ease: parametric, // bisa menambahkan function parametric di ease
+});
+
+// NOTE: Abaikan Video Part 8 & 9

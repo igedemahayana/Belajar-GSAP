@@ -67,6 +67,7 @@ Memberikan jeda sebelum animasi dimulai.
 repeat: 2,
 
 Menentukan berapa kali animasi diulang.
+repeat: -1 membuat sebuah loop tidak terbatas
 
 ### yoyo
 
